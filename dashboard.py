@@ -326,8 +326,6 @@ class BookstoreDashboard:
                     sales_fig = go.Figure()
                     sales_fig.update_layout(title="Sales Over Time - Removed")
 
-                # Removed agent activity chart logic
-
                 # Create customer cards
                 customer_data = summary['customer_metrics']['customer_details']
                 if customer_data:
@@ -338,13 +336,10 @@ class BookstoreDashboard:
                         satisfaction = customer.get('satisfaction', 0)
                         if satisfaction >= 0.8:
                             satisfaction_color = 'success'
-                            satisfaction_level = 'High'
                         elif satisfaction >= 0.6:
                             satisfaction_color = 'warning'
-                            satisfaction_level = 'Medium'
                         else:
                             satisfaction_color = 'danger'
-                            satisfaction_level = 'Low'
                         
                         # Determine budget status
                         budget = customer.get('budget', 0)
@@ -352,72 +347,34 @@ class BookstoreDashboard:
                         budget_remaining = budget - total_spent
                         budget_percentage = (budget_remaining / budget * 100) if budget > 0 else 0
                         
-                        budget_color = 'success' if budget_percentage > 50 else 'warning' if budget_percentage > 20 else 'danger'
-                        
-                        # Determine activity level
-                        books_purchased = customer.get('books_purchased', 0)
-                        shopping_list_size = customer.get('shopping_list_size', 0)
-                        
-                        if books_purchased > 2:
-                            activity_badge = 'High Activity'
-                            activity_color = 'success'
-                        elif books_purchased > 0 or shopping_list_size > 0:
-                            activity_badge = 'Active'
-                            activity_color = 'warning'
-                        else:
-                            activity_badge = 'Inactive'
-                            activity_color = 'secondary'
-                        
-                        # Create the customer card
+                        # Create compact customer card
                         card = dbc.Col([
                             dbc.Card([
                                 dbc.CardBody([
                                     html.H6(customer.get('name', 'Unknown Customer'), 
                                            className="card-title mb-2", 
-                                           style={'fontWeight': 'bold', 'fontSize': '16px'}),
+                                           style={'fontWeight': 'bold', 'fontSize': '14px'}),
                                     
-                                    # Activity badge
-                                    dbc.Badge(activity_badge, color=activity_color, className="mb-3"),
-                                    
-                                    # Budget section
                                     html.Div([
-                                        html.P("Budget:", className="mb-1 small text-muted"),
-                                        html.H6(f"${budget:.2f}", 
-                                               className="text-primary mb-2",
-                                               style={'fontWeight': 'bold'}),
-                                        html.P(f"Remaining: ${budget_remaining:.2f}", 
-                                              className="small text-muted mb-2"),
-                                        dbc.Progress(value=budget_percentage, 
-                                                   color=budget_color, 
-                                                   className="mb-3",
-                                                   style={'height': '8px'}),
+                                        html.Small(f"Budget: ${budget:.0f}", className="text-muted d-block"),
+                                        html.Small(f"Spent: ${total_spent:.0f}", className="text-muted d-block"),
+                                        html.Small(f"Books: {customer.get('books_purchased', 0)}", className="text-muted d-block mb-2"),
                                     ]),
                                     
-                                    # Satisfaction section
-                                    html.Div([
-                                        html.P("Satisfaction:", className="mb-1 small text-muted"),
-                                        dbc.Badge(f"{satisfaction_level} ({satisfaction:.1f})", 
-                                                color=satisfaction_color, className="mb-2"),
-                                    ]),
-                                    
-                                    # Purchase stats
-                                    html.Div([
-                                        html.P("Books Purchased:", className="mb-1 small text-muted"),
-                                        html.H6(f"{books_purchased}", 
-                                               className="text-success mb-2",
-                                               style={'fontWeight': 'bold'}),
-                                        html.P(f"Wishlist: {shopping_list_size} items", 
-                                              className="small text-muted"),
-                                    ])
-                                ], style={'padding': '20px'})
+                                    # Compact satisfaction indicator
+                                    dbc.Badge(f"Satisfaction: {satisfaction:.1f}", 
+                                            color=satisfaction_color, 
+                                            className="w-100",
+                                            style={'fontSize': '11px'})
+                                ], style={'padding': '12px'})
                             ], style={
-                                'height': '320px',
-                                'margin': '10px',
-                                'borderRadius': '10px',
-                                'boxShadow': '0 4px 6px rgba(0, 0, 0, 0.1)',
+                                'height': '140px',
+                                'margin': '5px',
+                                'borderRadius': '8px',
+                                'boxShadow': '0 2px 4px rgba(0, 0, 0, 0.1)',
                                 'border': '1px solid #e0e0e0'
                             })
-                        ], width=4, className="mb-3")
+                        ], width=3, className="mb-2")
                         
                         customer_cards.append(card)
                     
@@ -428,7 +385,7 @@ class BookstoreDashboard:
                                    className="mb-3",
                                    style={'color': '#28a745', 'fontWeight': 'bold'})
                         ]),
-                        dbc.Row(customer_cards, className="g-3")
+                        dbc.Row(customer_cards, className="g-1")
                     ])
                 else:
                     customer_table = html.Div([

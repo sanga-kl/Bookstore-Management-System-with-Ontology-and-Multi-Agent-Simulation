@@ -76,8 +76,8 @@ class BookstoreApp:
         try:
             self.dashboard = create_dashboard()
             print(f"🌟 Dashboard will be available at: http://localhost:{args.port}")
-            print("🎮 Use the web interface to control the simulation")
-            print("⏹️  Press Ctrl+C to stop the server")
+            print("Use the web interface to control the simulation")
+            print("⏹Press Ctrl+C to stop the server")
             
             self.dashboard.run_server(debug=args.debug, port=args.port)
             return True
@@ -333,7 +333,7 @@ Examples:
 
   # Inspect ontology only
   python app.py --mode inspect
-        """
+        """ 
     )
     
     parser.add_argument(
