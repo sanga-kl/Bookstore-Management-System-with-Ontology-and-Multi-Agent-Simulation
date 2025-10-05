@@ -1,0 +1,3389 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://bookstore.example.org/onto/bookstore"
+         xmlns="http://bookstore.example.org/onto/bookstore#">
+
+<owl:Ontology rdf:about="http://bookstore.example.org/onto/bookstore"/>
+
+<owl:ObjectProperty rdf:about="#hasAuthor">
+  <rdfs:domain rdf:resource="#Book"/>
+  <rdfs:range rdf:resource="#Author"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasGenre">
+  <rdfs:domain rdf:resource="#Book"/>
+  <rdfs:range rdf:resource="#Genre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#purchases">
+  <rdfs:domain rdf:resource="#Customer"/>
+  <rdfs:range rdf:resource="#Book"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#worksAt">
+  <rdfs:domain rdf:resource="#Employee"/>
+  <rdfs:range rdf:resource="#Entity"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasOrder">
+  <rdfs:domain rdf:resource="#Customer"/>
+  <rdfs:range rdf:resource="#Order"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#containsBook">
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="#Book"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#managedBy">
+  <rdfs:domain rdf:resource="#Inventory"/>
+  <rdfs:range rdf:resource="#Employee"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasInventory">
+  <rdfs:domain rdf:resource="#Book"/>
+  <rdfs:range rdf:resource="#Inventory"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#processedBy">
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="#Employee"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#hasPrice">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Book"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#availableQuantity">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Inventory"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#reorderLevel">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Inventory"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#customerName">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Customer"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#employeeName">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Employee"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#bookTitle">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Book"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#isbn">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Book"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#authorName">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Author"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#genreName">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Genre"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#orderDate">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#orderStatus">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#totalAmount">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#quantity">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Order"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#customerBudget">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Customer"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#employeeRole">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Employee"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#lastRestocked">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Inventory"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Entity">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Person">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Customer">
+  <rdfs:subClassOf rdf:resource="#Person"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Employee">
+  <rdfs:subClassOf rdf:resource="#Person"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Book">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Order">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Inventory">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Genre">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Author">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Transaction">
+  <rdfs:subClassOf rdf:resource="#Entity"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#fiction">
+  <rdf:type rdf:resource="#Genre"/>
+  <genreName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fiction</genreName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mystery">
+  <rdf:type rdf:resource="#Genre"/>
+  <genreName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mystery</genreName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#science_fiction">
+  <rdf:type rdf:resource="#Genre"/>
+  <genreName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Science Fiction</genreName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#romance">
+  <rdf:type rdf:resource="#Genre"/>
+  <genreName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Romance</genreName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#agatha_christie">
+  <rdf:type rdf:resource="#Author"/>
+  <authorName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Agatha Christie</authorName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#isaac_asimov">
+  <rdf:type rdf:resource="#Author"/>
+  <authorName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Isaac Asimov</authorName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#jane_austen">
+  <rdf:type rdf:resource="#Author"/>
+  <authorName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jane Austen</authorName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#stephen_king">
+  <rdf:type rdf:resource="#Author"/>
+  <authorName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stephen King</authorName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#murder_on_orient_express">
+  <rdf:type rdf:resource="#Book"/>
+  <hasAuthor rdf:resource="#agatha_christie"/>
+  <hasGenre rdf:resource="#mystery"/>
+  <hasInventory rdf:resource="#inv_murder_orient"/>
+  <bookTitle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Murder on the Orient Express</bookTitle>
+  <isbn rdf:datatype="http://www.w3.org/2001/XMLSchema#string">978-0-00-711931-7</isbn>
+  <hasPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</hasPrice>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#foundation">
+  <rdf:type rdf:resource="#Book"/>
+  <hasAuthor rdf:resource="#isaac_asimov"/>
+  <hasGenre rdf:resource="#science_fiction"/>
+  <hasInventory rdf:resource="#inv_foundation"/>
+  <bookTitle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Foundation</bookTitle>
+  <isbn rdf:datatype="http://www.w3.org/2001/XMLSchema#string">978-0-553-29335-0</isbn>
+  <hasPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</hasPrice>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#pride_and_prejudice">
+  <rdf:type rdf:resource="#Book"/>
+  <hasAuthor rdf:resource="#jane_austen"/>
+  <hasGenre rdf:resource="#romance"/>
+  <hasInventory rdf:resource="#inv_pride_prejudice"/>
+  <bookTitle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pride and Prejudice</bookTitle>
+  <isbn rdf:datatype="http://www.w3.org/2001/XMLSchema#string">978-0-14-143951-8</isbn>
+  <hasPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</hasPrice>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#the_shining">
+  <rdf:type rdf:resource="#Book"/>
+  <hasAuthor rdf:resource="#stephen_king"/>
+  <hasGenre rdf:resource="#fiction"/>
+  <hasInventory rdf:resource="#inv_shining"/>
+  <bookTitle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Shining</bookTitle>
+  <isbn rdf:datatype="http://www.w3.org/2001/XMLSchema#string">978-0-307-74365-9</isbn>
+  <hasPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</hasPrice>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#inv_murder_orient">
+  <rdf:type rdf:resource="#Inventory"/>
+  <managedBy rdf:resource="#emp_carol"/>
+  <availableQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</availableQuantity>
+  <reorderLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</reorderLevel>
+  <lastRestocked rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:21:30.812</lastRestocked>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#inv_foundation">
+  <rdf:type rdf:resource="#Inventory"/>
+  <managedBy rdf:resource="#emp_carol"/>
+  <availableQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</availableQuantity>
+  <reorderLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</reorderLevel>
+  <lastRestocked rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:21:30.812</lastRestocked>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#inv_pride_prejudice">
+  <rdf:type rdf:resource="#Inventory"/>
+  <managedBy rdf:resource="#emp_carol"/>
+  <availableQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</availableQuantity>
+  <reorderLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</reorderLevel>
+  <lastRestocked rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:21:30.812</lastRestocked>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#inv_shining">
+  <rdf:type rdf:resource="#Inventory"/>
+  <managedBy rdf:resource="#emp_carol"/>
+  <availableQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</availableQuantity>
+  <reorderLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</reorderLevel>
+  <lastRestocked rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:21:30.812</lastRestocked>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#emp_alice">
+  <rdf:type rdf:resource="#Employee"/>
+  <employeeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alice Johnson</employeeName>
+  <employeeRole rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Manager</employeeRole>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#emp_bob">
+  <rdf:type rdf:resource="#Employee"/>
+  <employeeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bob Smith</employeeName>
+  <employeeRole rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sales Associate</employeeRole>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#emp_carol">
+  <rdf:type rdf:resource="#Employee"/>
+  <employeeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Carol Brown</employeeName>
+  <employeeRole rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Inventory Specialist</employeeRole>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_0">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_a407d112"/>
+  <hasOrder rdf:resource="#order_d2a87947"/>
+  <hasOrder rdf:resource="#order_1839ddbb"/>
+  <hasOrder rdf:resource="#order_a7ba6e4a"/>
+  <hasOrder rdf:resource="#order_40e0a1d0"/>
+  <hasOrder rdf:resource="#order_7beb51fe"/>
+  <hasOrder rdf:resource="#order_a946497f"/>
+  <hasOrder rdf:resource="#order_94bba9f5"/>
+  <hasOrder rdf:resource="#order_6353cfb6"/>
+  <hasOrder rdf:resource="#order_f996c91e"/>
+  <hasOrder rdf:resource="#order_2c682a8a"/>
+  <hasOrder rdf:resource="#order_0133af6e"/>
+  <hasOrder rdf:resource="#order_965f7170"/>
+  <hasOrder rdf:resource="#order_efe716d2"/>
+  <hasOrder rdf:resource="#order_d7be43e7"/>
+  <hasOrder rdf:resource="#order_11d75b03"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_A</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.811215814946063</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_1">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_43310138"/>
+  <hasOrder rdf:resource="#order_ec50112b"/>
+  <hasOrder rdf:resource="#order_f5e57372"/>
+  <hasOrder rdf:resource="#order_c49a7088"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_B</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.021290626720033</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_2">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_61ffe312"/>
+  <hasOrder rdf:resource="#order_0b0f682e"/>
+  <hasOrder rdf:resource="#order_ac798693"/>
+  <hasOrder rdf:resource="#order_35f0a6d9"/>
+  <hasOrder rdf:resource="#order_737a3fb6"/>
+  <hasOrder rdf:resource="#order_68cd0fa0"/>
+  <hasOrder rdf:resource="#order_bea7c810"/>
+  <hasOrder rdf:resource="#order_c0ada058"/>
+  <hasOrder rdf:resource="#order_22293621"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_C</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.05351820429430276</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_3">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_99487c28"/>
+  <hasOrder rdf:resource="#order_2c34645c"/>
+  <hasOrder rdf:resource="#order_a1933275"/>
+  <hasOrder rdf:resource="#order_6eaff66f"/>
+  <hasOrder rdf:resource="#order_913a11b4"/>
+  <hasOrder rdf:resource="#order_7bb1ff7d"/>
+  <hasOrder rdf:resource="#order_0ff37105"/>
+  <hasOrder rdf:resource="#order_5eb815b6"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_D</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.825288577858723</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_4">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_f6117864"/>
+  <hasOrder rdf:resource="#order_1ab3d762"/>
+  <hasOrder rdf:resource="#order_4c59274c"/>
+  <hasOrder rdf:resource="#order_54c9b229"/>
+  <hasOrder rdf:resource="#order_16fcb952"/>
+  <hasOrder rdf:resource="#order_cee1efb0"/>
+  <hasOrder rdf:resource="#order_d552aae4"/>
+  <hasOrder rdf:resource="#order_a1a4639b"/>
+  <hasOrder rdf:resource="#order_85f0cc7a"/>
+  <hasOrder rdf:resource="#order_f70e35f2"/>
+  <hasOrder rdf:resource="#order_06ff2be0"/>
+  <hasOrder rdf:resource="#order_b83079c5"/>
+  <hasOrder rdf:resource="#order_50e54c53"/>
+  <hasOrder rdf:resource="#order_ae9b8283"/>
+  <hasOrder rdf:resource="#order_4919e09b"/>
+  <hasOrder rdf:resource="#order_12b35c48"/>
+  <hasOrder rdf:resource="#order_3a0391cc"/>
+  <hasOrder rdf:resource="#order_bbbe6ad3"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_E</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.4665456996815003</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_5">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_bf1bd970"/>
+  <hasOrder rdf:resource="#order_04403f0f"/>
+  <hasOrder rdf:resource="#order_fda8cc25"/>
+  <hasOrder rdf:resource="#order_e9046ee6"/>
+  <hasOrder rdf:resource="#order_e511b2e7"/>
+  <hasOrder rdf:resource="#order_356b0641"/>
+  <hasOrder rdf:resource="#order_833d18df"/>
+  <hasOrder rdf:resource="#order_baae48af"/>
+  <hasOrder rdf:resource="#order_87e29089"/>
+  <hasOrder rdf:resource="#order_7cb30b8b"/>
+  <hasOrder rdf:resource="#order_bdb4684d"/>
+  <hasOrder rdf:resource="#order_d37d5b7c"/>
+  <hasOrder rdf:resource="#order_85d44287"/>
+  <hasOrder rdf:resource="#order_f8e33ad8"/>
+  <hasOrder rdf:resource="#order_226841b6"/>
+  <hasOrder rdf:resource="#order_0083d1a3"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_F</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.2839384907493603</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_6">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_aa6b534a"/>
+  <hasOrder rdf:resource="#order_9064bf77"/>
+  <hasOrder rdf:resource="#order_c8610310"/>
+  <hasOrder rdf:resource="#order_0467da0b"/>
+  <hasOrder rdf:resource="#order_f97949e4"/>
+  <hasOrder rdf:resource="#order_c8202aae"/>
+  <hasOrder rdf:resource="#order_72ceeb42"/>
+  <hasOrder rdf:resource="#order_02232a02"/>
+  <hasOrder rdf:resource="#order_82f51fc3"/>
+  <hasOrder rdf:resource="#order_88a9dc33"/>
+  <hasOrder rdf:resource="#order_2b73729d"/>
+  <hasOrder rdf:resource="#order_ff2712b8"/>
+  <hasOrder rdf:resource="#order_c66b6f2f"/>
+  <hasOrder rdf:resource="#order_3e4ff2ea"/>
+  <hasOrder rdf:resource="#order_444c87f5"/>
+  <hasOrder rdf:resource="#order_f6ce1661"/>
+  <hasOrder rdf:resource="#order_fa860cd5"/>
+  <hasOrder rdf:resource="#order_1afc8f34"/>
+  <hasOrder rdf:resource="#order_08354939"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_G</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.151548124581483</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_7">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_efcad2ab"/>
+  <hasOrder rdf:resource="#order_76a1727c"/>
+  <hasOrder rdf:resource="#order_ed24a8c2"/>
+  <hasOrder rdf:resource="#order_f8b1e273"/>
+  <hasOrder rdf:resource="#order_0d3feed5"/>
+  <hasOrder rdf:resource="#order_18a1a43f"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_H</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.4626599155299367</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_8">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_622f7ffb"/>
+  <hasOrder rdf:resource="#order_cd3c96c1"/>
+  <hasOrder rdf:resource="#order_faf3cb87"/>
+  <hasOrder rdf:resource="#order_1a124c2f"/>
+  <hasOrder rdf:resource="#order_727926fa"/>
+  <hasOrder rdf:resource="#order_11efeaf6"/>
+  <hasOrder rdf:resource="#order_26cb6f04"/>
+  <hasOrder rdf:resource="#order_ac8b0a40"/>
+  <hasOrder rdf:resource="#order_77cf97d3"/>
+  <hasOrder rdf:resource="#order_b1986bc7"/>
+  <hasOrder rdf:resource="#order_9898744e"/>
+  <hasOrder rdf:resource="#order_cd2d2c04"/>
+  <hasOrder rdf:resource="#order_84ec1e89"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_I</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.7006183622324507</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_9">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_e3faf902"/>
+  <hasOrder rdf:resource="#order_6a581025"/>
+  <hasOrder rdf:resource="#order_fed71970"/>
+  <hasOrder rdf:resource="#order_6f786aff"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_J</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.5956663325684364</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_622f7ffb">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.148</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_a407d112">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.254</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_43310138">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.255</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f6117864">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.364</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_bf1bd970">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.365</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_aa6b534a">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.472</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_cd3c96c1">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.473</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1ab3d762">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.474</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ec50112b">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.475</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_61ffe312">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.578</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_4c59274c">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.580</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_efcad2ab">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.581</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_d2a87947">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.582</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_e3faf902">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.583</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1839ddbb">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.808</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_99487c28">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.810</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_54c9b229">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.810</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_9064bf77">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.914</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_04403f0f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:19.915</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0b0f682e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.022</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_a7ba6e4a">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.025</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_2c34645c">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.026</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_76a1727c">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.027</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_16fcb952">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.134</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ac798693">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.240</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_a1933275">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.396</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_35f0a6d9">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.397</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_cee1efb0">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.398</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_fda8cc25">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.531</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_6a581025">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.533</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_6eaff66f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.640</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_e9046ee6">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.763</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_40e0a1d0">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.869</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_faf3cb87">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.871</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_7beb51fe">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.979</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1a124c2f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.980</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_e511b2e7">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:20.981</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_c8610310">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:21.089</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_d552aae4">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:21.312</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_356b0641">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:21.420</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_a1a4639b">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:21.421</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_a946497f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:21.422</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_833d18df">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:21.530</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_727926fa">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:21.755</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_baae48af">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:21.757</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ed24a8c2">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:22.400</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0467da0b">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:22.802</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_11efeaf6">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:23.011</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_94bba9f5">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:23.013</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f97949e4">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:23.013</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_c8202aae">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:23.253</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_72ceeb42">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:24.137</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_02232a02">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:24.266</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_82f51fc3">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:24.536</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_88a9dc33">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:30.656</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_85f0cc7a">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:33.485</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_10">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_62fe5249"/>
+  <hasOrder rdf:resource="#order_3f24cc3c"/>
+  <hasOrder rdf:resource="#order_6048a5d1"/>
+  <hasOrder rdf:resource="#order_9f14afac"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_K</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.276556976432397</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_11">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_6e20ad18"/>
+  <hasOrder rdf:resource="#order_4175ba05"/>
+  <hasOrder rdf:resource="#order_a76dbb67"/>
+  <hasOrder rdf:resource="#order_83328b59"/>
+  <hasOrder rdf:resource="#order_5914606b"/>
+  <hasOrder rdf:resource="#order_1bc909d1"/>
+  <hasOrder rdf:resource="#order_0a2b6edd"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_L</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.7126345724034984</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_12">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_a5a158ad"/>
+  <hasOrder rdf:resource="#order_2cbbaf0c"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_M</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.204316362063631</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_13">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_351c3dfd"/>
+  <hasOrder rdf:resource="#order_245ba4c2"/>
+  <hasOrder rdf:resource="#order_2744d3ca"/>
+  <hasOrder rdf:resource="#order_f4655c9f"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_N</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.900518082397811</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_14">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_9de58134"/>
+  <hasOrder rdf:resource="#order_ead74f97"/>
+  <hasOrder rdf:resource="#order_a08f828d"/>
+  <hasOrder rdf:resource="#order_c8fc4524"/>
+  <hasOrder rdf:resource="#order_c70df693"/>
+  <hasOrder rdf:resource="#order_35b04009"/>
+  <hasOrder rdf:resource="#order_806e413d"/>
+  <hasOrder rdf:resource="#order_bb26f99a"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_O</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0661325335427954</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_15">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_cf25b3a9"/>
+  <hasOrder rdf:resource="#order_0041a737"/>
+  <hasOrder rdf:resource="#order_cae9a875"/>
+  <hasOrder rdf:resource="#order_19967ee3"/>
+  <hasOrder rdf:resource="#order_6da75c57"/>
+  <hasOrder rdf:resource="#order_98357d7a"/>
+  <hasOrder rdf:resource="#order_50f835b3"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_P</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.462977672385998</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_16">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_a85cf01d"/>
+  <hasOrder rdf:resource="#order_a0a41c81"/>
+  <hasOrder rdf:resource="#order_0e0f0fe0"/>
+  <hasOrder rdf:resource="#order_6b08224a"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_Q</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.492874644883603</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_17">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_43519e17"/>
+  <hasOrder rdf:resource="#order_7bf2a982"/>
+  <hasOrder rdf:resource="#order_844517f0"/>
+  <hasOrder rdf:resource="#order_d4eb6122"/>
+  <hasOrder rdf:resource="#order_3d9a9527"/>
+  <hasOrder rdf:resource="#order_1e1a1886"/>
+  <hasOrder rdf:resource="#order_f0308981"/>
+  <hasOrder rdf:resource="#order_ab1d298e"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_R</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.7918820651090535</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_18">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_f4455560"/>
+  <hasOrder rdf:resource="#order_f36b3acf"/>
+  <hasOrder rdf:resource="#order_e71321dd"/>
+  <hasOrder rdf:resource="#order_d574e0ec"/>
+  <hasOrder rdf:resource="#order_b04bb8fa"/>
+  <hasOrder rdf:resource="#order_acc6bda6"/>
+  <hasOrder rdf:resource="#order_ca849fee"/>
+  <hasOrder rdf:resource="#order_5f6a6e53"/>
+  <hasOrder rdf:resource="#order_ad3c9830"/>
+  <hasOrder rdf:resource="#order_3ab0acf3"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_S</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.2316548013392072</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_19">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_6f7fda54"/>
+  <hasOrder rdf:resource="#order_1ca2a49c"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_T</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.799851161367323</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_20">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_169e311a"/>
+  <hasOrder rdf:resource="#order_8bc5a1ec"/>
+  <hasOrder rdf:resource="#order_e41b72b4"/>
+  <hasOrder rdf:resource="#order_491e459d"/>
+  <hasOrder rdf:resource="#order_ab0486f2"/>
+  <hasOrder rdf:resource="#order_7c2412ce"/>
+  <hasOrder rdf:resource="#order_4912b119"/>
+  <hasOrder rdf:resource="#order_e44a0fef"/>
+  <hasOrder rdf:resource="#order_41d60786"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_U</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.788310219936955</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_21">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_8da8e119"/>
+  <hasOrder rdf:resource="#order_d0634000"/>
+  <hasOrder rdf:resource="#order_80305d29"/>
+  <hasOrder rdf:resource="#order_84b1b4b7"/>
+  <hasOrder rdf:resource="#order_390a48d1"/>
+  <hasOrder rdf:resource="#order_3b320154"/>
+  <hasOrder rdf:resource="#order_6d4b93ab"/>
+  <hasOrder rdf:resource="#order_c257fb14"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_V</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">11.85672739858724</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_22">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_0590f37d"/>
+  <hasOrder rdf:resource="#order_baae4034"/>
+  <hasOrder rdf:resource="#order_59fcfcff"/>
+  <hasOrder rdf:resource="#order_4064f826"/>
+  <hasOrder rdf:resource="#order_d8b133a9"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_W</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.880061982159015</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_23">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_86aefc9a"/>
+  <hasOrder rdf:resource="#order_0960f2ed"/>
+  <hasOrder rdf:resource="#order_1c06a4af"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_X</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.6875399774137865</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_24">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_cb9c77fa"/>
+  <hasOrder rdf:resource="#order_39b4aa69"/>
+  <hasOrder rdf:resource="#order_8cee8a30"/>
+  <hasOrder rdf:resource="#order_b54c8504"/>
+  <hasOrder rdf:resource="#order_40a636a9"/>
+  <hasOrder rdf:resource="#order_849bca82"/>
+  <hasOrder rdf:resource="#order_d9a603f5"/>
+  <hasOrder rdf:resource="#order_7dc788fc"/>
+  <hasOrder rdf:resource="#order_b07abcfd"/>
+  <hasOrder rdf:resource="#order_5b3f6e81"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_Y</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.965568664813739</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_25">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_98cadede"/>
+  <hasOrder rdf:resource="#order_dd87f97e"/>
+  <hasOrder rdf:resource="#order_d5705450"/>
+  <hasOrder rdf:resource="#order_8ae948a6"/>
+  <hasOrder rdf:resource="#order_cd65e63d"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_Z</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.441345413515203</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_26">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_7ca8d93e"/>
+  <hasOrder rdf:resource="#order_e54272d9"/>
+  <hasOrder rdf:resource="#order_af69e3d4"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_[</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.159501205617746</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_27">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_044b8542"/>
+  <hasOrder rdf:resource="#order_7dc1a166"/>
+  <hasOrder rdf:resource="#order_659c7823"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_\</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.635965220015681</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_28">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_cc493958"/>
+  <hasOrder rdf:resource="#order_43b293c8"/>
+  <hasOrder rdf:resource="#order_fa7dc67f"/>
+  <hasOrder rdf:resource="#order_fe8172db"/>
+  <hasOrder rdf:resource="#order_4a991c04"/>
+  <hasOrder rdf:resource="#order_5a11d348"/>
+  <hasOrder rdf:resource="#order_39464cb3"/>
+  <hasOrder rdf:resource="#order_59379070"/>
+  <hasOrder rdf:resource="#order_109502a4"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_]</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.789323961695191</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_29">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_71cce511"/>
+  <hasOrder rdf:resource="#order_324ad298"/>
+  <hasOrder rdf:resource="#order_5ed5bf0e"/>
+  <hasOrder rdf:resource="#order_61588af0"/>
+  <hasOrder rdf:resource="#order_483a88e8"/>
+  <hasOrder rdf:resource="#order_f99e6025"/>
+  <hasOrder rdf:resource="#order_5e8b9f08"/>
+  <hasOrder rdf:resource="#order_5904b2b2"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_^</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.5271237640269355</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_30">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_4a773feb"/>
+  <hasOrder rdf:resource="#order_c8398f88"/>
+  <hasOrder rdf:resource="#order_0f53a6d7"/>
+  <hasOrder rdf:resource="#order_efb7ece6"/>
+  <hasOrder rdf:resource="#order_49bff1c1"/>
+  <hasOrder rdf:resource="#order_555634bf"/>
+  <hasOrder rdf:resource="#order_ab6543c9"/>
+  <hasOrder rdf:resource="#order_540ee89c"/>
+  <hasOrder rdf:resource="#order_40c8fb68"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer__</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.9453927929256416</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_31">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_1123b480"/>
+  <hasOrder rdf:resource="#order_0db9d6ec"/>
+  <hasOrder rdf:resource="#order_22071be1"/>
+  <hasOrder rdf:resource="#order_1b259130"/>
+  <hasOrder rdf:resource="#order_1b32406f"/>
+  <hasOrder rdf:resource="#order_a6dbc40e"/>
+  <hasOrder rdf:resource="#order_7a4b7851"/>
+  <hasOrder rdf:resource="#order_3ba5781a"/>
+  <hasOrder rdf:resource="#order_92f25104"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_`</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.657814403258154</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_32">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_b8555f61"/>
+  <hasOrder rdf:resource="#order_f7ee3b0e"/>
+  <hasOrder rdf:resource="#order_37de4553"/>
+  <hasOrder rdf:resource="#order_78775910"/>
+  <hasOrder rdf:resource="#order_8720e960"/>
+  <hasOrder rdf:resource="#order_8b792fd5"/>
+  <hasOrder rdf:resource="#order_4fcb61a1"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_a</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.41737097456409</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_33">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_ed54d35f"/>
+  <hasOrder rdf:resource="#order_0832ad8e"/>
+  <hasOrder rdf:resource="#order_5a92d0d5"/>
+  <hasOrder rdf:resource="#order_2f67dee1"/>
+  <hasOrder rdf:resource="#order_dae6927c"/>
+  <hasOrder rdf:resource="#order_28b83aec"/>
+  <hasOrder rdf:resource="#order_1fc7a965"/>
+  <hasOrder rdf:resource="#order_9ccf5b4f"/>
+  <hasOrder rdf:resource="#order_e37de31d"/>
+  <hasOrder rdf:resource="#order_7c6e5df1"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_b</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.873891677524492</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_34">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_25ae913c"/>
+  <hasOrder rdf:resource="#order_5d1bba43"/>
+  <hasOrder rdf:resource="#order_dff0c976"/>
+  <hasOrder rdf:resource="#order_617ac5dc"/>
+  <hasOrder rdf:resource="#order_f044bca6"/>
+  <hasOrder rdf:resource="#order_907a3655"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_c</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.4841252650024135</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_35">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_179586c6"/>
+  <hasOrder rdf:resource="#order_360ae719"/>
+  <hasOrder rdf:resource="#order_278fa624"/>
+  <hasOrder rdf:resource="#order_3eb1dae6"/>
+  <hasOrder rdf:resource="#order_9a9c9cee"/>
+  <hasOrder rdf:resource="#order_0136726b"/>
+  <hasOrder rdf:resource="#order_11737556"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_d</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3148757527872412</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_36">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_1ebe7319"/>
+  <hasOrder rdf:resource="#order_c210781b"/>
+  <hasOrder rdf:resource="#order_9565dbdf"/>
+  <hasOrder rdf:resource="#order_212d31a8"/>
+  <hasOrder rdf:resource="#order_630542fe"/>
+  <hasOrder rdf:resource="#order_f7637079"/>
+  <hasOrder rdf:resource="#order_6d8a94a8"/>
+  <hasOrder rdf:resource="#order_0237d718"/>
+  <hasOrder rdf:resource="#order_7b2b9d50"/>
+  <hasOrder rdf:resource="#order_e9a724ac"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_e</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.628559710359408</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_37">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_84cc4191"/>
+  <hasOrder rdf:resource="#order_f40d967c"/>
+  <hasOrder rdf:resource="#order_bdd89705"/>
+  <hasOrder rdf:resource="#order_26db5a24"/>
+  <hasOrder rdf:resource="#order_b46d58ad"/>
+  <hasOrder rdf:resource="#order_5a477403"/>
+  <hasOrder rdf:resource="#order_eea132dd"/>
+  <hasOrder rdf:resource="#order_04d6ebe4"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_f</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.3023702837095321</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_38">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_83836e81"/>
+  <hasOrder rdf:resource="#order_b6bcd81e"/>
+  <hasOrder rdf:resource="#order_a00c3137"/>
+  <hasOrder rdf:resource="#order_1f587580"/>
+  <hasOrder rdf:resource="#order_bdd26772"/>
+  <hasOrder rdf:resource="#order_8f8b47bf"/>
+  <hasOrder rdf:resource="#order_0a176a6f"/>
+  <hasOrder rdf:resource="#order_5095cf69"/>
+  <hasOrder rdf:resource="#order_1b65249e"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_g</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.494828037293283</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#customer_customer_39">
+  <rdf:type rdf:resource="#Customer"/>
+  <hasOrder rdf:resource="#order_2c5b9b6f"/>
+  <hasOrder rdf:resource="#order_d30af942"/>
+  <hasOrder rdf:resource="#order_0a2907da"/>
+  <hasOrder rdf:resource="#order_773ad30e"/>
+  <hasOrder rdf:resource="#order_79c2e257"/>
+  <hasOrder rdf:resource="#order_4e7a9f68"/>
+  <hasOrder rdf:resource="#order_3c75e5dd"/>
+  <customerName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Customer_h</customerName>
+  <customerBudget rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.352257430811445</customerBudget>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_25ae913c">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.735</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_cf25b3a9">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.780</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_044b8542">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.781</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_cb9c77fa">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.783</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_cc493958">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.886</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f5e57372">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.886</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1ebe7319">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.888</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1123b480">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.888</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f4455560">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.889</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_43519e17">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.890</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_169e311a">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.891</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_a5a158ad">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.892</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_2c5b9b6f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.893</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_913a11b4">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.895</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f8b1e273">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:51.896</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_c210781b">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.003</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_b8555f61">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.005</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_c49a7088">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.006</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_6e20ad18">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.009</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_351c3dfd">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.010</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_9de58134">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.012</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_7bf2a982">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.013</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_86aefc9a">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.013</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_39b4aa69">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.014</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_71cce511">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.015</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_fed71970">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.017</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_737a3fb6">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.019</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_d30af942">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.021</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_43b293c8">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.129</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_4a773feb">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.130</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0041a737">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.132</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_98cadede">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.133</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_9565dbdf">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.134</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_8bc5a1ec">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.136</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_7ca8d93e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.137</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0db9d6ec">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.138</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0960f2ed">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.139</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_6353cfb6">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.140</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_7bb1ff7d">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.143</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_84cc4191">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.145</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_4175ba05">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.255</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f70e35f2">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.256</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_5d1bba43">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.257</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_26cb6f04">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.258</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_844517f0">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.260</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_e54272d9">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.261</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_179586c6">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.263</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0590f37d">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.264</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0d3feed5">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.271</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1c06a4af">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.378</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_8cee8a30">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.379</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_af69e3d4">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.380</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0a2907da">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.382</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_245ba4c2">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.383</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_fa7dc67f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.384</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_62fe5249">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.386</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_83836e81">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.388</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_360ae719">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.499</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_6f7fda54">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.501</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_c8398f88">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.502</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_22071be1">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.506</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_06ff2be0">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.509</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_7dc1a166">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.511</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f36b3acf">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.620</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_b54c8504">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.622</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ac8b0a40">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.623</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1ca2a49c">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.627</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_324ad298">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.628</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_a76dbb67">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.629</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0f53a6d7">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.748</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_8da8e119">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.749</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_278fa624">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.752</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_baae4034">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.752</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ead74f97">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.754</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_dd87f97e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.872</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_e41b72b4">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.873</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_3eb1dae6">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.874</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_d0634000">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.876</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_2cbbaf0c">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.877</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_68cd0fa0">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.879</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_212d31a8">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.882</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_fe8172db">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.993</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_3f24cc3c">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.994</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_659c7823">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.995</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_b6bcd81e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.997</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_a85cf01d">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.998</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_cae9a875">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:52.999</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_e71321dd">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.001</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ed54d35f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.002</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_9a9c9cee">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.004</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f996c91e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.006</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f7ee3b0e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.008</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_a08f828d">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.009</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_87e29089">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.010</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0ff37105">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.011</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_773ad30e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.012</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_d574e0ec">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.116</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_7cb30b8b">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.118</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_a00c3137">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.121</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f40d967c">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.123</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_630542fe">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.127</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_5ed5bf0e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.128</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_6f786aff">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.131</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_2744d3ca">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.132</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_5eb815b6">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.133</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_79c2e257">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.134</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_2c682a8a">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.242</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0136726b">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.244</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_bea7c810">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.245</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_83328b59">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.246</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_dff0c976">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.247</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f7637079">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.249</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_d5705450">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.251</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_19967ee3">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.252</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_efb7ece6">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.253</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_491e459d">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.254</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_c8fc4524">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.256</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0832ad8e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.257</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_37de4553">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.257</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_4a991c04">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.258</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_61588af0">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.259</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_bdd89705">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.366</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_d4eb6122">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.368</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_c0ada058">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.369</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ab0486f2">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.371</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_5914606b">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.372</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_a0a41c81">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.374</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_77cf97d3">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.374</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_59fcfcff">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.378</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_bdb4684d">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.380</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_6da75c57">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.382</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_2b73729d">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.383</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_78775910">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.384</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_40a636a9">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.387</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_11737556">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.388</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_6d8a94a8">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.388</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_18a1a43f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.389</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0e0f0fe0">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.496</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1f587580">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.498</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_b04bb8fa">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.501</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_4e7a9f68">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.504</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0237d718">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.505</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ff2712b8">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.507</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_d37d5b7c">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.615</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f4655c9f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.617</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_bdd26772">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.617</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_c70df693">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.618</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_6b08224a">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.620</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_4064f826">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.625</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_b83079c5">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.733</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_80305d29">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.735</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_85d44287">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.738</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_22293621">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.740</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_3c75e5dd">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.741</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_98357d7a">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.742</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_c66b6f2f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.744</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_849bca82">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.745</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_5a11d348">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.747</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_b1986bc7">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.748</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_3d9a9527">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.751</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1b259130">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.753</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_50e54c53">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.862</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_5a92d0d5">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.864</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_6048a5d1">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.864</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_3e4ff2ea">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.866</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_35b04009">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.866</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_49bff1c1">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.868</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_617ac5dc">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.869</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ae9b8283">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.977</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_806e413d">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.979</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_26db5a24">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.981</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_8720e960">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.983</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_483a88e8">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:53.985</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_8f8b47bf">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.091</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_7c2412ce">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.094</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_84b1b4b7">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.095</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_acc6bda6">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.096</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_8b792fd5">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.099</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_8ae948a6">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.100</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_d9a603f5">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.101</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_b46d58ad">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.102</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_5a477403">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.211</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_cd65e63d">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.213</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_4912b119">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.215</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_50f835b3">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.216</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1e1a1886">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.217</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_444c87f5">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.219</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_9f14afac">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.222</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ca849fee">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.226</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f99e6025">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.228</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0133af6e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.230</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_39464cb3">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.353</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1b32406f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.356</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_5f6a6e53">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.356</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_2f67dee1">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.359</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_4919e09b">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.360</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_e44a0fef">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.362</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0a176a6f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.363</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_7dc788fc">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.364</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_12b35c48">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.473</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f6ce1661">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.476</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_7b2b9d50">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.479</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f044bca6">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.480</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_9898744e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.588</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_eea132dd">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.590</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_bb26f99a">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.591</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_a6dbc40e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.592</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_390a48d1">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.595</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_fa860cd5">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.596</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f0308981">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.598</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_3a0391cc">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.703</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_965f7170">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.709</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_04d6ebe4">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.712</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_3b320154">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.713</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_dae6927c">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.714</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_555634bf">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.818</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1afc8f34">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.819</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_7a4b7851">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.819</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_907a3655">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.820</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_efe716d2">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.821</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_cd2d2c04">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.821</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_59379070">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.822</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_28b83aec">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.822</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_109502a4">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.931</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_6d4b93ab">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.932</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1bc909d1">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.934</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_41d60786">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:54.935</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ab6543c9">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.052</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ad3c9830">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.054</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_c257fb14">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.055</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1fc7a965">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.055</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_5095cf69">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.177</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_f8e33ad8">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.178</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_d8b133a9">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.179</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_bbbe6ad3">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.180</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_08354939">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.301</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_4fcb61a1">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.303</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_9ccf5b4f">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.304</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_226841b6">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.422</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_5e8b9f08">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.425</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_d7be43e7">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.426</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_ab1d298e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.537</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_e37de31d">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.539</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_3ba5781a">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.657</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_b07abcfd">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.794</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_540ee89c">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.797</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_5b3f6e81">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.905</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_11d75b03">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.908</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_92f25104">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#the_shining"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:55.910</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_1b65249e">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:56.066</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0a2b6edd">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#foundation"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:56.067</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_e9a724ac">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:56.068</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_7c6e5df1">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#murder_on_orient_express"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:56.068</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_40c8fb68">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:56.178</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_5904b2b2">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:57.663</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_0083d1a3">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:58.711</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_84ec1e89">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:20:58.988</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#order_3ab0acf3">
+  <rdf:type rdf:resource="#Order"/>
+  <containsBook rdf:resource="#pride_and_prejudice"/>
+  <orderDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-05T19:21:05.222</orderDate>
+  <orderStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</orderStatus>
+  <totalAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.99</totalAmount>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>
