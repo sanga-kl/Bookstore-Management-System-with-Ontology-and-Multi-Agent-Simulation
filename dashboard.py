@@ -21,7 +21,7 @@ class BookstoreDashboard:
         self.simulation_thread = None
         self.simulation_queue = queue.Queue()
         self.is_running = False
-        self.auto_refresh = False
+        self.auto_refresh = True  # Enable auto-refresh by default
         
         self.setup_layout()
         self.setup_callbacks()
@@ -73,14 +73,15 @@ class BookstoreDashboard:
                                         dbc.Button("⏹️ Stop", id="stop-btn", color="danger", className="me-2"),
                                         dbc.Button("🔄 Reset", id="reset-btn", color="info")
                                     ])
-                                ], width=8),
+                                ], width=12),  # Changed from width=8 to width=12
                                 dbc.Col([
                                     dbc.Switch(
                                         id="auto-refresh",
                                         label="Auto Refresh",
-                                        value=False
+                                        value=True,  # Set to True by default
+                                        style={"display": "none"}  # Hide the toggle button
                                     )
-                                ], width=4, className="d-flex align-items-center")
+                                ], width=4, className="d-flex align-items-center", style={"display": "none"})
                             ])
                         ])
                     ])
@@ -214,7 +215,7 @@ class BookstoreDashboard:
                 id="interval-component",
                 interval=2000,  # Update every 2 seconds
                 n_intervals=0,
-                disabled=True
+                disabled=False  # Enable auto-refresh by default
             )
             
         ], fluid=True)
